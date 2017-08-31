@@ -1,7 +1,7 @@
 package com.okeydokey;
 
-import com.okeydokey.service.CustomerService;
 import com.okeydokey.domain.Customer;
+import com.okeydokey.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +22,9 @@ public class App implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        System.out.println(customerService.findOne(1));
+        Customer created = customerService.save(new Customer(null, "Hidetoshi", "Dekisugi"));
+
+        System.out.println(created + " is created!");
 
         customerService.findAll().forEach(System.out::println);
     }
